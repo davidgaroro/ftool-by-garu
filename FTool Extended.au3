@@ -8,7 +8,7 @@ Opt("TrayOnEventMode", 1) ; Enable OnEvent functions notifications for the tray
 ; General Declarations
 Local const $sTitle = "FTool by Garu", $iWinWidth = 298, $iWinHeight = 522
 
-; Spam variables
+; Spammer variables
 Local const $iTabsCount = 4, $iTabsSpammers = 5
 Local Enum $eSpamButton, $eSpamWindow, $eSpamInterval, $eSpamFKey, $eSpamSBar
 Local $aSpamControls[$iTabsCount * $iTabsSpammers][5] ; Save spammers controls
@@ -41,7 +41,7 @@ TrayItemSetOnEvent(-1, "_Exit")
 
 			; Select Window
 			GUICtrlCreateLabel("Window", $iCol1, 33 + ($j * $iSpace))
-			$aSpamControls[$jCount][$eSpamWindow] = GUICtrlCreateCombo("Server Flyff - Character" & $jCount, $iCol1, 48 + ($j * $iSpace), 138, 20, 0x3) ; $CBS_DROPDOWNLIST
+			$aSpamControls[$jCount][$eSpamWindow] = GUICtrlCreateCombo("Server Flyff - Character", $iCol1, 48 + ($j * $iSpace), 138, 20, 0x3) ; $CBS_DROPDOWNLIST
 
 			; Interval
 			GUICtrlCreateLabel("Interval (ms)", $iCol1, 75 + ($j * $iSpace))
@@ -49,11 +49,13 @@ TrayItemSetOnEvent(-1, "_Exit")
 
 			; F-Key
 			GUICtrlCreateLabel("F-Key", $iCol2, 33 + ($j * $iSpace))
-			$aSpamControls[$jCount][$eSpamFKey] = GUICtrlCreateCombo("F1", $iCol2, 48 + ($j * $iSpace), 40, 20, 0x3)
-
+			$aSpamControls[$jCount][$eSpamFKey] = GUICtrlCreateCombo(" ", $iCol2, 48 + ($j * $iSpace), 40, 20, 0x3)
+			GUICtrlSetData(-1, "F1|F2|F3|F4|F5|F6|F7|F8|F9")
+			
 			; Skill Bar
 			GUICtrlCreateLabel("Skill Bar", $iCol2, 75 + ($j * $iSpace))
-			$aSpamControls[$jCount][$eSpamSBar] = GUICtrlCreateCombo("1", $iCol2, 90 + ($j * $iSpace), 40, 20, 0x3)
+			$aSpamControls[$jCount][$eSpamSBar] = GUICtrlCreateCombo(" ", $iCol2, 90 + ($j * $iSpace), 40, 20, 0x3)
+			GUICtrlSetData(-1, "1|2|3|4|5|6|7|8|9")
 			
 			$jCount += 1
 		Next

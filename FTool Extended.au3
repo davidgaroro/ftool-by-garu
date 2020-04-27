@@ -33,7 +33,7 @@ TrayItemSetOnEvent(-1, "_Exit")
 
 			; Select Window
 			GUICtrlCreateLabel("Window", $iCol1, 33 + ($j * $iSpace))
-			GUICtrlCreateCombo("Server Flyff - Character", $iCol1, 48 + ($j * $iSpace), 138, 20, BitOr(0x3, 0x0100))
+			GUICtrlCreateCombo("Server Flyff - Character", $iCol1, 48 + ($j * $iSpace), 138, 20, 0x3) ; $CBS_DROPDOWNLIST
 
 			; Interval
 			GUICtrlCreateLabel("Interval (ms)", $iCol1, 75 + ($j * $iSpace))

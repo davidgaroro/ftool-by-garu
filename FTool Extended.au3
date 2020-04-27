@@ -6,41 +6,51 @@ Opt("TrayMenuMode", 1) ; Disable default tray menu
 Opt("TrayOnEventMode", 1) ; Enable OnEvent functions notifications for the tray
 
 ; General Declarations
-Global const $sTitle = "FTool by Garu"
-Global const $iSpamCount = 4
+Global const $sTitle = "FTool by Garu", $iTabsCount = 4, $iTabsSpammers = 4
+Local const $iWinWidth = 298, $iWinHeight = 522
 
-Local $hMainGUI = GUICreate($sTitle, 298, 506) ; Create GUI window
-GUISetBkColor(0xFFFFFF) ; Change background white color
+Local $hMainGUI = GUICreate($sTitle, $iWinWidth, $iWinHeight) ; Create GUI window
 GUISetOnEvent(-3, "_Exit") ; Register the close event handler
 
 ; Create a tray exit option
 TrayCreateItem("Exit")
 TrayItemSetOnEvent(-1, "_Exit")
 
-; GUIControls variables
-Local Const $iSpace=100, $iCol1=98, $iCol2=245
+#Region TABS & SPAMMERS
+	GUICtrlCreateTab(0, 0, $iWinWidth + 2, $iWinHeight + 1)
 
-#Region Spammer
-	For $i = 0 To $iSpamCount
-		GUICtrlCreateGroup("", 5, ($i * $iSpace), 288, 102)
+	; GUIControls variables
+	Local Const $iSpace=99, $iCol1=98, $iCol2=245
 
-		; Create labels controls
-		GUICtrlCreateLabel("Window", $iCol1, 13 + ($i * $iSpace))
-		GUICtrlCreateLabel("F-Key", $iCol2, 13 + ($i * $iSpace))
-		GUICtrlCreateLabel("Interval (ms)", $iCol1, 55 + ($i * $iSpace))
-		GUICtrlCreateLabel("Skill Bar", $iCol2, 55 + ($i * $iSpace))
-		
-		GUICtrlCreateCombo("Flyff Name - Character", $iCol1, 28 + ($i * $iSpace), 138, 20, BitOr(0x3, 0x0100))
-		GUICtrlCreateInput("500", $iCol1, 70 + ($i * $iSpace), 138, 20, 0x2000)
-		
-		; Create input controls
-		GUICtrlCreateButton("Start", 14, 16 + ($i * $iSpace), 76, 76)
-		GUICtrlCreateCombo("F1", $iCol2, 28 + ($i * $iSpace), 40, 20, 0x3)
-		GUICtrlCreateCombo("1", $iCol2, 70 + ($i * $iSpace), 40, 20, 0x3)
+	For $i = 1 To $iTabsCount
+		GUICtrlCreateTabItem("Spammer " & $i)
+			
+		For $j = 0 To $iTabsSpammers
+			GUICtrlCreateGroup("", 6, 20 + ($j * $iSpace), 286, 101)
+			
+			; Start Button
+			GUICtrlCreateButton("Start", 13, 35 + ($j * $iSpace), 76, 76)
 
-		GUICtrlCreateGroup("", -99, -99, 1, 1) ; Close group
+			; Select Window
+			GUICtrlCreateLabel("Window", $iCol1, 33 + ($j * $iSpace))
+			GUICtrlCreateCombo("Server Flyff - Character", $iCol1, 48 + ($j * $iSpace), 138, 20, BitOr(0x3, 0x0100))
+
+			; Interval
+			GUICtrlCreateLabel("Interval (ms)", $iCol1, 75 + ($j * $iSpace))
+			GUICtrlCreateInput("500", $iCol1, 90 + ($j * $iSpace), 138, 20, 0x2000)
+
+			; F-Key
+			GUICtrlCreateLabel("F-Key", $iCol2, 33 + ($j * $iSpace))
+			GUICtrlCreateCombo("F1", $iCol2, 48 + ($j * $iSpace), 40, 20, 0x3)
+
+			; Skill Bar
+			GUICtrlCreateLabel("Skill Bar", $iCol2, 75 + ($j * $iSpace))
+			GUICtrlCreateCombo("1", $iCol2, 90 + ($j * $iSpace), 40, 20, 0x3)
+			
+			GUICtrlCreateGroup("", -99, -99, 1, 1) ; Close group
+		Next
 	Next
-#EndRegion
+#EndRegion 
 
 ; Display the GUI
 GUISetState(@SW_SHOW, $hMainGUI) 

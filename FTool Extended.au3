@@ -11,6 +11,7 @@ Global Const $GUI_EVENT_CLOSE = -3 		; Events and messages
 Global Const $CBS_DROPDOWNLIST = 0x3	; ComboBox Styles
 Global Const $ES_NUMBER = 8192				; Input Styles
 Global Const $WM_COMMAND = 0x0111			; Window Messages
+Global Const $CBN_DROPDOWN = 7				; ComboBox Notifications
 
 ; General Declarations
 Local const $sTitle = "FTool by Garu", $iWinWidth = 298, $iWinHeight = 522

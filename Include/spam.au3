@@ -64,5 +64,13 @@ Func _OnButtonClick()
   GUICtrlSetState($iFKeyCtrlId, $GUI_DISABLE)
   GUICtrlSetState($iSkillCtrlId, $GUI_DISABLE)
 
-  ; TODO: Run script with skill, key, interval and PID params
+  ; Get main window PID
+  Local $iMainPID = WinGetProcess($hMainGUI)
+
+  ; Get flyff window handle
+  Local $hWindow = WinGetHandle($sCheckWindow)
+
+  ; Run script with params: main window PID, flyff window handle, interval, fkey and skill bar
+  Local $sParams = $iMainPID & ' "' & $hWindow & '" ' & $iCheckInterval & ' "' & $sCheckFKey & '" "' & $sCheckSkill & '"'
+  Run($sSpammerFile & ' ' & $sParams)
 EndFunc   ;==>_OnButtonClick

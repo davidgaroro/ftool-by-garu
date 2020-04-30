@@ -15,6 +15,8 @@ Global Const $WM_COMMAND = 0x0111			; Window Messages
 Global Const $CBN_DROPDOWN = 7				; ComboBox Notifications
 Global Const $MB_TASKMODAL = 8192 		; Task modal
 Global Const $MB_ICONERROR = 16 			; Stop-sign icon
+Global Const $GUI_ENABLE = 64					; GUI State
+Global Const $GUI_DISABLE = 128				;	GUI State
 
 ; General Declarations
 Local const $sTitle = "FTool by Garu", $iWinWidth = 298, $iWinHeight = 522
@@ -50,7 +52,7 @@ TrayItemSetOnEvent(-1, "_Exit")
 			
 			; Start Button
 			$g_aSpamControls[$jCount][$g_eSpamButton] = GUICtrlCreateButton("Start", 13, 35 + ($j * $iSpace), 76, 76)
-			GUICtrlSetOnEvent(-1, "_OnButtonStart")
+			GUICtrlSetOnEvent(-1, "_OnButtonClick")
 
 			; Select Window
 			GUICtrlCreateLabel("Window", $iCol1, 33 + ($j * $iSpace))

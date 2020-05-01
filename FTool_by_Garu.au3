@@ -1,7 +1,7 @@
 #RequireAdmin
 #include "Include\Constants.au3"
-#include "Include\spam.au3"
-#include "Include\windows.au3"
+#include "Include\Spam.au3"
+#include "Include\Windows.au3"
 
 ; AutoItSetOption
 Opt("GuiOnEventMode", 1) ; Change to OnEvent mode

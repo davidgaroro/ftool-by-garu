@@ -25,7 +25,7 @@ Local const $sTitle = "FTool by Garu", $iWinWidth = 298, $iWinHeight = 522
 ; Spammer variables
 Local const $iTabsCount = 4, $iTabsSpammers = 5
 Global Enum $g_eSpamWindow, $g_eSpamPID
-Global $g_aSpamControls[$iTabsCount * $iTabsSpammers][2] ; Save spammers controls
+Global $g_aSpammers[$iTabsCount * $iTabsSpammers][2] ; Save spammers controls
 Global const $g_sSelectWindow = "Select Window"
 
 ; Create GUI window
@@ -61,7 +61,7 @@ TrayItemSetOnEvent(-1, "_Exit")
 
 			; Select window
 			GUICtrlCreateLabel("Window", $iCol1, 33 + ($j * $iSpace))
-			$g_aSpamControls[$jCount][$g_eSpamWindow] = GUICtrlCreateCombo($g_sSelectWindow, $iCol1, 48 + ($j * $iSpace), 138, 20, $CBS_DROPDOWNLIST)
+			$g_aSpammers[$jCount][$g_eSpamWindow] = GUICtrlCreateCombo($g_sSelectWindow, $iCol1, 48 + ($j * $iSpace), 138, 20, $CBS_DROPDOWNLIST)
 
 			; Interval
 			GUICtrlCreateLabel("Interval (ms)", $iCol1, 75 + ($j * $iSpace))

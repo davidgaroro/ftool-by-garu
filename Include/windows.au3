@@ -8,8 +8,8 @@ Func WM_COMMAND($hWnd, $iMsg, $wParam)
 
   ; Check if dropdown event is from select window control
   Local $iSpamControl
-  For $i = 0 To UBound($g_aSpamControls) - 1
-    $iSpamControl = $g_aSpamControls[$i][$g_eSpamWindow]
+  For $i = 0 To UBound($g_aSpammers) - 1
+    $iSpamControl = $g_aSpammers[$i][$g_eSpamWindow]
     If $iIDFrom < $iSpamControl Then Return
     If $iIDFrom = $iSpamControl Then
       _GetNeuzWindows($iIDFrom)

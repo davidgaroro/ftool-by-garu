@@ -16,8 +16,8 @@ Func _OnButtonClick()
 
   If $bTimer = true Then
     ; Stop spammer.exe process
-     ProcessClose($g_aSpamControls[$iSpamIndex][$g_eSpamPID])
-    $g_aSpamControls[$iSpamIndex][$g_eSpamPID] = ""
+     ProcessClose($g_aSpammers[$iSpamIndex][$g_eSpamPID])
+    $g_aSpammers[$iSpamIndex][$g_eSpamPID] = ""
 
     ; Enable controls
     GUICtrlSetData($iButtonCtrlId, "Start")
@@ -81,5 +81,5 @@ Func _OnButtonClick()
   Local $sParams = $iMainPID & ' "' & $hWindow & '" ' & $iCheckInterval & ' "' & $sCheckFKey & '" "' & $sCheckSkill & '"'
 
   ; Save spammer.exe process PID
-  $g_aSpamControls[$iSpamIndex][$g_eSpamPID] = Run($sSpammerFile & ' ' & $sParams)
+  $g_aSpammers[$iSpamIndex][$g_eSpamPID] = Run($sSpammerFile & ' ' & $sParams)
 EndFunc   ;==>_OnButtonClick

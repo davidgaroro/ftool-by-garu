@@ -52,8 +52,8 @@ TrayItemSetOnEvent(-1, "_Exit")
 			$g_aSpammers[$jCount][$g_eSpamWindow] = GUICtrlCreateCombo($g_sSelectWindow, $iCol1, 48 + ($j * $iSpace), 138, 20, $CBS_DROPDOWNLIST)
 
 			; Interval
-			GUICtrlCreateLabel("Interval (ms)", $iCol1, 75 + ($j * $iSpace))
-			$g_aSpammers[$jCount][$g_eSpamInterval] = GUICtrlCreateInput("100", $iCol1, 90 + ($j * $iSpace), 138, 20, $ES_NUMBER)
+			GUICtrlCreateLabel("Interval (seconds)", $iCol1, 75 + ($j * $iSpace))
+			$g_aSpammers[$jCount][$g_eSpamInterval] = GUICtrlCreateInput("0", $iCol1, 90 + ($j * $iSpace), 138, 20, $ES_NUMBER)
 
 			; F-Key
 			GUICtrlCreateLabel("F-Key", $iCol2, 33 + ($j * $iSpace))

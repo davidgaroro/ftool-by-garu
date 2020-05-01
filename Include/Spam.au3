@@ -1,7 +1,6 @@
 #include-once
 
 Func _OnButtonClick()
-
   ; Get spammer index
   Local $iSpamIndex = GUICtrlRead(@GUI_CtrlId - 1)
 
@@ -32,9 +31,9 @@ Func _SpamStart($iSpamIndex)
   Local $sSkill = GUICtrlRead($iSkillCtrlId)
   Local $sSpammerFile = @ScriptDir & "\Subfiles\Spammer.exe"
 
-  ; Check if interval is less than 100 otherwise set to 100
-  If $iInterval < 100 Then
-    $iInterval = 100
+  ; Check if interval has value otherwise set inverval to 0
+  If $iInterval = "" Then
+    $iInterval = 0
     GUICtrlSetData($iIntervalCtrlId, $iInterval)
   EndIf
   

@@ -33,7 +33,7 @@ Func _Spam()
 EndFunc   ;==>_Spam
 
 Local $hTimer = TimerInit() ; Begin the timer and store the handle in a variable
-Local $fTimeDiff
+Local $fDiff = 0
 
 While 1
 	; Exit if main process does not exist
@@ -42,13 +42,13 @@ While 1
 	EndIf
 	
 	; Sleep to reduce CPU usage
-	Sleep(100) 
+	Sleep(100)
 
 	; Find the difference in time from the previous call of TimerInit.
-	$fTimeDiff = TimerDiff($hTimer)
+	$fDiff = TimerDiff($hTimer)
 
 	; Spam keys
-	If $fTimeDiff >= $iInterval Then
+	If $fDiff >= ($iInterval * 1000) Then
 		$hTimer = TimerInit()
 		_Spam()
 	EndIf

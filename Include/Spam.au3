@@ -32,12 +32,12 @@ Func _SpamStart($iSpamIndex)
   Local $sSkill = GUICtrlRead($iSkillCtrlId)
   Local $sSpammerFile = @ScriptDir & "\Subfiles\Spammer.exe"
 
-  ; Check if interval has value otherwise set inverval to 100
-  If $iInterval = "" Then
+  ; Check if interval is less than 100 otherwise set to 100
+  If $iInterval < 100 Then
     $iInterval = 100
-    GUICtrlSetData(@GUI_CtrlId + 4, 0)
+    GUICtrlSetData($iIntervalCtrlId, $iInterval)
   EndIf
-    
+  
   ; Validate input data
   Select
     ; Check if spammer.exe file exists

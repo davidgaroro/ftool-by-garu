@@ -1,3 +1,4 @@
+#include-once
 
 Func WM_COMMAND($hWnd, $iMsg, $wParam)
   Local $iCode = BitShift($wParam, 16) ; HiWord - this gives the message that was sent

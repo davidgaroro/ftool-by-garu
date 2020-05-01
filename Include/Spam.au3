@@ -1,3 +1,4 @@
+#include-once
 
 Func _OnButtonClick()
 

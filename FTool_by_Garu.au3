@@ -15,6 +15,7 @@ Global Const $WM_COMMAND = 0x0111			; Window Messages
 Global Const $CBN_DROPDOWN = 7				; ComboBox Notifications
 Global Const $MB_TASKMODAL = 8192 		; Task modal
 Global Const $MB_ICONERROR = 16 			; Stop-sign icon
+Global Const $GUI_HIDE = 32						; GUI State
 Global Const $GUI_ENABLE = 64					; GUI State
 Global Const $GUI_DISABLE = 128				;	GUI State
 
@@ -23,8 +24,8 @@ Local const $sTitle = "FTool by Garu", $iWinWidth = 298, $iWinHeight = 522
 
 ; Spammer variables
 Local const $iTabsCount = 4, $iTabsSpammers = 5
-Global Enum $g_eSpamButton, $g_eSpamWindow, $g_eSpamInterval, $g_eSpamFKey, $g_eSpamSBar
-Global $g_aSpamControls[$iTabsCount * $iTabsSpammers][5] ; Save spammers controls
+Global Enum $g_eSpamWindow, $g_eSpamPID
+Global $g_aSpamControls[$iTabsCount * $iTabsSpammers][2] ; Save spammers controls
 Global const $g_sSelectWindow = "Select Window"
 
 ; Create GUI window
@@ -50,26 +51,30 @@ TrayItemSetOnEvent(-1, "_Exit")
 		For $j = 0 To $iTabsSpammers - 1
 			GUICtrlCreateGroup("", 6, 20 + ($j * $iSpace), 286, 101)
 			
-			; Start Button
-			$g_aSpamControls[$jCount][$g_eSpamButton] = GUICtrlCreateButton("Start", 13, 35 + ($j * $iSpace), 76, 76)
+			; Hidden label to save spammer index
+			GUICtrlCreateLabel($jCount, -99, -99)
+			GUICtrlSetState(-1, $GUI_HIDE)
+
+			; Start button
+			GUICtrlCreateButton("Start", 13, 35 + ($j * $iSpace), 76, 76)
 			GUICtrlSetOnEvent(-1, "_OnButtonClick")
 
-			; Select Window
+			; Select window
 			GUICtrlCreateLabel("Window", $iCol1, 33 + ($j * $iSpace))
 			$g_aSpamControls[$jCount][$g_eSpamWindow] = GUICtrlCreateCombo($g_sSelectWindow, $iCol1, 48 + ($j * $iSpace), 138, 20, $CBS_DROPDOWNLIST)
 
 			; Interval
 			GUICtrlCreateLabel("Interval (ms)", $iCol1, 75 + ($j * $iSpace))
-			$g_aSpamControls[$jCount][$g_eSpamInterval] = GUICtrlCreateInput("500", $iCol1, 90 + ($j * $iSpace), 138, 20, $ES_NUMBER)
+			GUICtrlCreateInput("0", $iCol1, 90 + ($j * $iSpace), 138, 20, $ES_NUMBER)
 
 			; F-Key
 			GUICtrlCreateLabel("F-Key", $iCol2, 33 + ($j * $iSpace))
-			$g_aSpamControls[$jCount][$g_eSpamFKey] = GUICtrlCreateCombo(" ", $iCol2, 48 + ($j * $iSpace), 40, 20, $CBS_DROPDOWNLIST)
+			GUICtrlCreateCombo(" ", $iCol2, 48 + ($j * $iSpace), 40, 20, $CBS_DROPDOWNLIST)
 			GUICtrlSetData(-1, "F1|F2|F3|F4|F5|F6|F7|F8|F9")
 			
-			; Skill Bar
+			; Skill bar
 			GUICtrlCreateLabel("Skill Bar", $iCol2, 75 + ($j * $iSpace))
-			$g_aSpamControls[$jCount][$g_eSpamSBar] = GUICtrlCreateCombo(" ", $iCol2, 90 + ($j * $iSpace), 40, 20, $CBS_DROPDOWNLIST)
+			GUICtrlCreateCombo(" ", $iCol2, 90 + ($j * $iSpace), 40, 20, $CBS_DROPDOWNLIST)
 			GUICtrlSetData(-1, "1|2|3|4|5|6|7|8|9")
 			
 			$jCount += 1

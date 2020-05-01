@@ -1,6 +1,9 @@
 
 Func _OnButtonClick()
 
+  ; Get spammer index
+  Local $iSpamIndex = GUICtrlRead(@GUI_CtrlId - 1)
+
   ; Get input controlID
   Local $iButtonCtrlId = @GUI_CtrlId
   Local $iWindowCtrlId = @GUI_CtrlId + 2

@@ -29,15 +29,15 @@ Func _OnButtonClick()
   EndIf
 
   ; Get input data
-  Local $sCheckWindow = GUICtrlRead($iWindowCtrlId)
-  Local $iCheckInterval = GUICtrlRead($iIntervalCtrlId)
-  Local $sCheckFKey = GUICtrlRead($iFKeyCtrlId)
-  Local $sCheckSkill = GUICtrlRead($iSkillCtrlId)
+  Local $sWindow = GUICtrlRead($iWindowCtrlId)
+  Local $iInterval = GUICtrlRead($iIntervalCtrlId)
+  Local $sFKey = GUICtrlRead($iFKeyCtrlId)
+  Local $sSkill = GUICtrlRead($iSkillCtrlId)
   Local $sSpammerFile = @ScriptDir & "\Subfiles\Spammer.exe"
 
   ; Check if interval has value otherwise set inverval to 0
-  If $iCheckInterval = "" Then
-    $iCheckInterval = 0
+  If $iInterval = "" Then
+    $iInterval = 0
     GUICtrlSetData(@GUI_CtrlId + 4, 0)
   EndIf
     
@@ -49,17 +49,17 @@ Func _OnButtonClick()
       Return
 
     ; Check if window has been selected
-    Case $sCheckWindow = $g_sSelectWindow
+    Case $sWindow = $g_sSelectWindow
       MsgBox($MB_TASKMODAL + $MB_ICONERROR, $g_sSelectWindow, "Select a Flyff window.")
       Return
 
     ; Check if window still exists
-    Case WinExists($sCheckWindow) = 0
-      MsgBox($MB_TASKMODAL + $MB_ICONERROR, $sCheckWindow, "Selected Flyff window doesn't exist.")
+    Case WinExists($sWindow) = 0
+      MsgBox($MB_TASKMODAL + $MB_ICONERROR, $sWindow, "Selected Flyff window doesn't exist.")
       Return
 
     ; Check if fkey or skill has been selected
-    Case $sCheckFKey = " " And $sCheckSkill = " "
+    Case $sFKey = " " And $sSkill = " "
       MsgBox($MB_TASKMODAL + $MB_ICONERROR, "Validation Error", "Select atleast one F-Key or Skill Bar.")
       Return
   EndSelect
@@ -75,10 +75,10 @@ Func _OnButtonClick()
   Local $iMainPID = WinGetProcess($hMainGUI)
 
   ; Get flyff window handle
-  Local $hWindow = WinGetHandle($sCheckWindow)
+  Local $hWindow = WinGetHandle($sWindow)
 
   ; Run script with params: main window PID, flyff window handle, interval, fkey and skill bar
-  Local $sParams = $iMainPID & ' "' & $hWindow & '" ' & $iCheckInterval & ' "' & $sCheckFKey & '" "' & $sCheckSkill & '"'
+  Local $sParams = $iMainPID & ' "' & $hWindow & '" ' & $iInterval & ' "' & $sFKey & '" "' & $sSkill & '"'
 
   ; Save spammer.exe process PID
   $g_aSpammers[$iSpamIndex][$g_eSpamPID] = Run($sSpammerFile & ' ' & $sParams)

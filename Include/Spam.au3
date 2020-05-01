@@ -5,29 +5,25 @@ Func _OnButtonClick()
   ; Get spammer index
   Local $iSpamIndex = GUICtrlRead(@GUI_CtrlId - 1)
 
-  ; Get input controlID
-  Local $iButtonCtrlId = @GUI_CtrlId
-  Local $iWindowCtrlId = @GUI_CtrlId + 2
-  Local $iIntervalCtrlId = @GUI_CtrlId + 4
-  Local $iFKeyCtrlId = @GUI_CtrlId + 6
-  Local $iSkillCtrlId = @GUI_CtrlId + 8
+  ; Get spammer state
+  Local $bSpammer = ($g_aSpammers[$iSpamIndex][$g_eSpamPID] <> "") 
 
-  ; Get timer state
-  Local $bTimer = (GUICtrlRead($iButtonCtrlId) = "Stop") 
-
-  If $bTimer = true Then
-    ; Stop spammer.exe process
-     ProcessClose($g_aSpammers[$iSpamIndex][$g_eSpamPID])
-    $g_aSpammers[$iSpamIndex][$g_eSpamPID] = ""
-
-    ; Enable controls
-    GUICtrlSetData($iButtonCtrlId, "Start")
-    GUICtrlSetState($iWindowCtrlId, $GUI_ENABLE)
-    GUICtrlSetState($iIntervalCtrlId, $GUI_ENABLE)
-    GUICtrlSetState($iFKeyCtrlId, $GUI_ENABLE)
-    GUICtrlSetState($iSkillCtrlId, $GUI_ENABLE)
-    Return
+  ; Start or Stop spammer
+  If $bSpammer = False Then
+    _SpamStart($iSpamIndex)
+  Else
+    _SpamStop($iSpamIndex)
   EndIf
+EndFunc   ;==>_OnButtonClick
+
+
+Func _SpamStart($iSpamIndex)
+  ; Get input controlID
+  Local $iButtonCtrlId = $g_aSpammers[$iSpamIndex][$g_eSpamButton]
+  Local $iWindowCtrlId = $g_aSpammers[$iSpamIndex][$g_eSpamWindow]
+  Local $iIntervalCtrlId = $g_aSpammers[$iSpamIndex][$g_eSpamInterval]
+  Local $iFKeyCtrlId = $g_aSpammers[$iSpamIndex][$g_eSpamFKey]
+  Local $iSkillCtrlId = $g_aSpammers[$iSpamIndex][$g_eSpamSkill]
 
   ; Get input data
   Local $sWindow = GUICtrlRead($iWindowCtrlId)
@@ -36,9 +32,9 @@ Func _OnButtonClick()
   Local $sSkill = GUICtrlRead($iSkillCtrlId)
   Local $sSpammerFile = @ScriptDir & "\Subfiles\Spammer.exe"
 
-  ; Check if interval has value otherwise set inverval to 0
+  ; Check if interval has value otherwise set inverval to 100
   If $iInterval = "" Then
-    $iInterval = 0
+    $iInterval = 100
     GUICtrlSetData(@GUI_CtrlId + 4, 0)
   EndIf
     
@@ -83,4 +79,25 @@ Func _OnButtonClick()
 
   ; Save spammer.exe process PID
   $g_aSpammers[$iSpamIndex][$g_eSpamPID] = Run($sSpammerFile & ' ' & $sParams)
-EndFunc   ;==>_OnButtonClick
+EndFunc   ;==>_SpamStart
+
+
+Func _SpamStop($iSpamIndex)
+  ; Get input controlID
+  Local $iButtonCtrlId = $g_aSpammers[$iSpamIndex][$g_eSpamButton]
+  Local $iWindowCtrlId = $g_aSpammers[$iSpamIndex][$g_eSpamWindow]
+  Local $iIntervalCtrlId = $g_aSpammers[$iSpamIndex][$g_eSpamInterval]
+  Local $iFKeyCtrlId = $g_aSpammers[$iSpamIndex][$g_eSpamFKey]
+  Local $iSkillCtrlId = $g_aSpammers[$iSpamIndex][$g_eSpamSkill]
+
+  ; Stop spammer.exe process
+  ProcessClose($g_aSpammers[$iSpamIndex][$g_eSpamPID])
+  $g_aSpammers[$iSpamIndex][$g_eSpamPID] = ""
+
+  ; Enable controls
+  GUICtrlSetData($iButtonCtrlId, "Start")
+  GUICtrlSetState($iWindowCtrlId, $GUI_ENABLE)
+  GUICtrlSetState($iIntervalCtrlId, $GUI_ENABLE)
+  GUICtrlSetState($iFKeyCtrlId, $GUI_ENABLE)
+  GUICtrlSetState($iSkillCtrlId, $GUI_ENABLE)
+EndFunc   ;==>_SpamStop

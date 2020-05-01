@@ -8,19 +8,18 @@ Opt("GuiOnEventMode", 1) ; Change to OnEvent mode
 Opt("TrayMenuMode", 1) ; Disable default tray menu
 Opt("TrayOnEventMode", 1) ; Enable OnEvent functions notifications for the tray
 
-; General Declarations
-Local const $sTitle = "FTool by Garu", $iWinWidth = 298, $iWinHeight = 522
+; GUI Window variables
+Local const $sTitle = "FTool by Garu", $iWinWidth = 298, $iWinHeight = 522, $iTabsCount = 4, $iTabsSpammers = 5
 
 ; Spammer variables
-Local const $iTabsCount = 4, $iTabsSpammers = 5
-Global Enum $g_eSpamWindow, $g_eSpamPID
-Global $g_aSpammers[$iTabsCount * $iTabsSpammers][2] ; Save spammers controls
+Global Enum $g_eSpamButton, $g_eSpamWindow, $g_eSpamInterval, $g_eSpamFKey, $g_eSpamSkill, $g_eSpamPID
+Global $g_aSpammers[$iTabsCount * $iTabsSpammers][6]
 Global const $g_sSelectWindow = "Select Window"
 
 ; Create GUI window
 Local $hMainGUI = GUICreate($sTitle, $iWinWidth, $iWinHeight) 
 
-; Register the close event handler
+; Register close event handler
 GUISetOnEvent($GUI_EVENT_CLOSE, "_Exit")
 
 ; Create a tray exit option
@@ -45,7 +44,7 @@ TrayItemSetOnEvent(-1, "_Exit")
 			GUICtrlSetState(-1, $GUI_HIDE)
 
 			; Start button
-			GUICtrlCreateButton("Start", 13, 35 + ($j * $iSpace), 76, 76)
+			$g_aSpammers[$jCount][$g_eSpamButton] = GUICtrlCreateButton("Start", 13, 35 + ($j * $iSpace), 76, 76)
 			GUICtrlSetOnEvent(-1, "_OnButtonClick")
 
 			; Select window
@@ -54,16 +53,16 @@ TrayItemSetOnEvent(-1, "_Exit")
 
 			; Interval
 			GUICtrlCreateLabel("Interval (ms)", $iCol1, 75 + ($j * $iSpace))
-			GUICtrlCreateInput("0", $iCol1, 90 + ($j * $iSpace), 138, 20, $ES_NUMBER)
+			$g_aSpammers[$jCount][$g_eSpamInterval] = GUICtrlCreateInput("100", $iCol1, 90 + ($j * $iSpace), 138, 20, $ES_NUMBER)
 
 			; F-Key
 			GUICtrlCreateLabel("F-Key", $iCol2, 33 + ($j * $iSpace))
-			GUICtrlCreateCombo(" ", $iCol2, 48 + ($j * $iSpace), 40, 20, $CBS_DROPDOWNLIST)
+			$g_aSpammers[$jCount][$g_eSpamFKey] = GUICtrlCreateCombo(" ", $iCol2, 48 + ($j * $iSpace), 40, 20, $CBS_DROPDOWNLIST)
 			GUICtrlSetData(-1, "F1|F2|F3|F4|F5|F6|F7|F8|F9")
 			
 			; Skill bar
 			GUICtrlCreateLabel("Skill Bar", $iCol2, 75 + ($j * $iSpace))
-			GUICtrlCreateCombo(" ", $iCol2, 90 + ($j * $iSpace), 40, 20, $CBS_DROPDOWNLIST)
+			$g_aSpammers[$jCount][$g_eSpamSkill] = GUICtrlCreateCombo(" ", $iCol2, 90 + ($j * $iSpace), 40, 20, $CBS_DROPDOWNLIST)
 			GUICtrlSetData(-1, "1|2|3|4|5|6|7|8|9")
 			
 			$jCount += 1
@@ -71,7 +70,7 @@ TrayItemSetOnEvent(-1, "_Exit")
 	Next
 #EndRegion 
 
-GUIRegisterMsg($WM_COMMAND, "WM_COMMAND") ; Detect dropdown event
+GUIRegisterMsg($WM_COMMAND, "WM_COMMAND") ; Detect dropdown events
 
 ; Display the GUI
 GUISetState(@SW_SHOW, $hMainGUI)

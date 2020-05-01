@@ -35,11 +35,14 @@ Func _OnButtonClick()
   Local $sSpammerFile = @ScriptDir & "\Subfiles\Spammer.exe"
 
   ; Check if interval has value otherwise set inverval to 0
-  If $iCheckInterval = "" Then GUICtrlSetData(@GUI_CtrlId + 4, 0)
+  If $iCheckInterval = "" Then
+    $iCheckInterval = 0
+    GUICtrlSetData(@GUI_CtrlId + 4, 0)
+  EndIf
     
   ; Validate input data
   Select
-    ; Check if Spammer.exe file exists
+    ; Check if spammer.exe file exists
     Case FileExists($sSpammerFile) = 0
       MsgBox($MB_TASKMODAL + $MB_ICONERROR, $sSpammerFile, "Windows cannot find " & @CRLF & "'" & $sSpammerFile & "'.")
       Return

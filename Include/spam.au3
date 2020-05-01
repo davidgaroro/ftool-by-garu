@@ -15,8 +15,9 @@ Func _OnButtonClick()
   Local $bTimer = (GUICtrlRead($iButtonCtrlId) = "Stop") 
 
   If $bTimer = true Then
-    ; Stop Spammer.exe process
-    ; TODO: ProcessClose(Spammer PID)
+    ; Stop spammer.exe process
+     ProcessClose($g_aSpamControls[$iSpamIndex][$g_eSpamPID])
+    $g_aSpamControls[$iSpamIndex][$g_eSpamPID] = ""
 
     ; Enable controls
     GUICtrlSetData($iButtonCtrlId, "Start")
@@ -78,5 +79,7 @@ Func _OnButtonClick()
 
   ; Run script with params: main window PID, flyff window handle, interval, fkey and skill bar
   Local $sParams = $iMainPID & ' "' & $hWindow & '" ' & $iCheckInterval & ' "' & $sCheckFKey & '" "' & $sCheckSkill & '"'
-  Run($sSpammerFile & ' ' & $sParams)
+
+  ; Save spammer.exe process PID
+  $g_aSpamControls[$iSpamIndex][$g_eSpamPID] = Run($sSpammerFile & ' ' & $sParams)
 EndFunc   ;==>_OnButtonClick

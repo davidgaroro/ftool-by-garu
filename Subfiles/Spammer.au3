@@ -36,6 +36,8 @@ Func _SendKey($iKey)
   DllCall("Functions.dll", "none", "fnPostMessage", "HWnd", $hWindow, "long", 256, "long", $iKey, "long", 0)
 EndFunc   ;==>_SendKey
 
+_Spam() ; Spam once before the next interval
+
 Local $hTimer = TimerInit() ; Begin the timer and store the handle in a variable
 Local $fDiff = 0
 

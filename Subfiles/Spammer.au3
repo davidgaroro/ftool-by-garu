@@ -23,14 +23,18 @@ If $bFKey = True Then $sFKey = StringTrimLeft($sFKey, 1)
 Func _Spam()
 	If $bSkill = True Then
 		; Send Skill number to flyff window
-		DllCall("Functions.dll", "none", "fnPostMessage", "HWnd", $hWindow, "long", 256, "long", 48 + $sSkill, "long", 0)
+		_SendKey(48 + $sSkill)
 		If $bFKey = True Then Sleep(150)
 	EndIf
 	If $bFKey = True Then
 		; Send F-key to flyff window
-		DllCall("Functions.dll", "none", "fnPostMessage", "HWnd", $hWindow, "long", 256, "long", 111 + $sFKey, "long", 0)
+		_SendKey(111 + $sFKey)
 	EndIf
 EndFunc   ;==>_Spam
+
+Func _SendKey($iKey)
+  DllCall("Functions.dll", "none", "fnPostMessage", "HWnd", $hWindow, "long", 256, "long", $iKey, "long", 0)
+EndFunc   ;==>_SendKey
 
 Local $hTimer = TimerInit() ; Begin the timer and store the handle in a variable
 Local $fDiff = 0

@@ -1,5 +1,6 @@
 #RequireAdmin
 #include "Include\Constants.au3"
+#include "Include\Settings.au3"
 #include "Include\Spam.au3"
 #include "Include\Windows.au3"
 
@@ -61,12 +62,10 @@ TrayItemSetOnEvent(-1, "_Exit")
 			; F-Key
 			GUICtrlCreateLabel("F-Key", $iCol2, 33 + ($j * $iSpace))
 			$g_aSpammers[$jCount][$g_eSpamFKey] = GUICtrlCreateCombo(" ", $iCol2, 48 + ($j * $iSpace), 40, 20, $CBS_DROPDOWNLIST)
-			GUICtrlSetData(-1, "F1|F2|F3|F4|F5|F6|F7|F8|F9")
 			
 			; Skill bar
 			GUICtrlCreateLabel("Skill Bar", $iCol2, 75 + ($j * $iSpace))
 			$g_aSpammers[$jCount][$g_eSpamSkill] = GUICtrlCreateCombo(" ", $iCol2, 90 + ($j * $iSpace), 40, 20, $CBS_DROPDOWNLIST)
-			GUICtrlSetData(-1, "1|2|3|4|5|6|7|8|9")
 			
 			$jCount += 1
 		Next
@@ -74,7 +73,9 @@ TrayItemSetOnEvent(-1, "_Exit")
 #EndRegion
 
 ; Detect dropdown events
-GUIRegisterMsg($WM_COMMAND, "WM_COMMAND") 
+GUIRegisterMsg($WM_COMMAND, "WM_COMMAND")
+
+_IniLoad() ; Read the INI file and get the saved values
 
 ; Display the GUI
 GUISetState(@SW_SHOW, $hMainGUI)
@@ -86,5 +87,6 @@ While 1
 WEnd
 
 Func _Exit()
+	_IniSave() ; Save values to the INI file
 	Exit
 EndFunc   ;==>_Exit

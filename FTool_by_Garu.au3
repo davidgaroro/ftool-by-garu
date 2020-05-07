@@ -9,7 +9,7 @@ Opt("TrayMenuMode", 1) ; Disable default tray menu
 Opt("TrayOnEventMode", 1) ; Enable OnEvent functions notifications for the tray
 
 ; GUI Window variables
-Local const $sTitle = "FTool by Garu", $iWinWidth = 298, $iWinHeight = 522, $iTabsCount = 4, $iTabsSpammers = 5
+Local const $sTitle = "FTool by Garu", $iWinWidth = 286, $iWinHeight = 522, $iTabsCount = 4, $iTabsSpammers = 5
 
 ; Spammer variables
 Global Enum $g_eSpamButton, $g_eSpamWindow, $g_eSpamInterval, $g_eSpamFKey, $g_eSpamSkill, $g_eSpamPID, $g_eSpamWindowTitle
@@ -33,21 +33,21 @@ TrayItemSetOnEvent(-1, "_Exit")
 	GUICtrlCreateTab(0, 0, $iWinWidth + 2, $iWinHeight + 1)
 
 	; GUI variables
-	Local Const $iSpace=99, $iCol1=98, $iCol2=245
+	Local Const $iSpace=99, $iCol1=86, $iCol2=233
 
 	Local $jCount = 0
 	For $i = 1 To $iTabsCount
 		GUICtrlCreateTabItem("Spammer " & $i)
 			
 		For $j = 0 To $iTabsSpammers - 1
-			GUICtrlCreateGroup("", 6, 20 + ($j * $iSpace), 286, 101)
+			GUICtrlCreateGroup("", 6, 20 + ($j * $iSpace), 274, 101)
 			
 			; Hidden label to save spammer index
 			GUICtrlCreateLabel($jCount, -99, -99)
 			GUICtrlSetState(-1, $GUI_HIDE)
 
 			; Start button
-			$g_aSpammers[$jCount][$g_eSpamButton] = GUICtrlCreateButton("Start", 13, 35 + ($j * $iSpace), 76, 76)
+			$g_aSpammers[$jCount][$g_eSpamButton] = GUICtrlCreateButton("Start", 13, 47 + ($j * $iSpace), 64, 64)
 			GUICtrlSetOnEvent(-1, "_OnButtonClick")
 
 			; Select window

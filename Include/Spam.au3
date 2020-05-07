@@ -75,6 +75,9 @@ Func _SpamStart($iSpamIndex)
 
   ; Run script with params: main window PID, flyff window handle, interval, fkey and skill bar
   Local $sParams = $iMainPID & ' "' & $hWindow & '" ' & $iInterval & ' "' & $sFKey & '" "' & $sSkill & '"'
+  
+  ; Save window title
+  $g_aSpammers[$iSpamIndex][$g_eSpamWindowTitle] = $sWindow
 
   ; Save spammer.exe process PID
   $g_aSpammers[$iSpamIndex][$g_eSpamPID] = Run($sSpammerFile & ' ' & $sParams)
@@ -88,6 +91,9 @@ Func _SpamStop($iSpamIndex)
   Local $iIntervalCtrlId = $g_aSpammers[$iSpamIndex][$g_eSpamInterval]
   Local $iFKeyCtrlId = $g_aSpammers[$iSpamIndex][$g_eSpamFKey]
   Local $iSkillCtrlId = $g_aSpammers[$iSpamIndex][$g_eSpamSkill]
+
+  ; Clear window title
+  $g_aSpammers[$iSpamIndex][$g_eSpamWindowTitle] = ""
 
   ; Stop spammer.exe process
   ProcessClose($g_aSpammers[$iSpamIndex][$g_eSpamPID])

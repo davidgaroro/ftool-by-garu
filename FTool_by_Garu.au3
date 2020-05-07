@@ -12,9 +12,12 @@ Opt("TrayOnEventMode", 1) ; Enable OnEvent functions notifications for the tray
 Local const $sTitle = "FTool by Garu", $iWinWidth = 298, $iWinHeight = 522, $iTabsCount = 4, $iTabsSpammers = 5
 
 ; Spammer variables
-Global Enum $g_eSpamButton, $g_eSpamWindow, $g_eSpamInterval, $g_eSpamFKey, $g_eSpamSkill, $g_eSpamPID
-Global $g_aSpammers[$iTabsCount * $iTabsSpammers][6]
+Global Enum $g_eSpamButton, $g_eSpamWindow, $g_eSpamInterval, $g_eSpamFKey, $g_eSpamSkill, $g_eSpamPID, $g_eSpamWindowTitle
+Global $g_aSpammers[$iTabsCount * $iTabsSpammers][7]
 Global const $g_sSelectWindow = "Select Window"
+
+; Window variables
+Global $g_aWindows[0]
 
 ; Create GUI window
 Local $hMainGUI = GUICreate($sTitle, $iWinWidth, $iWinHeight) 
@@ -68,16 +71,18 @@ TrayItemSetOnEvent(-1, "_Exit")
 			$jCount += 1
 		Next
 	Next
-#EndRegion 
+#EndRegion
 
-GUIRegisterMsg($WM_COMMAND, "WM_COMMAND") ; Detect dropdown events
+; Detect dropdown events
+GUIRegisterMsg($WM_COMMAND, "WM_COMMAND") 
 
 ; Display the GUI
 GUISetState(@SW_SHOW, $hMainGUI)
 
 ; Loop until the user exits
 While 1
-	Sleep(100) ; Sleep to reduce CPU usage
+	_CheckWindowsExists()
+	Sleep(1000) ; Sleep to reduce CPU usage
 WEnd
 
 Func _Exit()

@@ -13,8 +13,8 @@ Opt("TrayOnEventMode", 1) ; Enable OnEvent functions notifications for the tray
 Local const $sTitle = "FTool by Garu", $iWinWidth = 286, $iWinHeight = 522, $iTabsCount = 4, $iTabsSpammers = 5
 
 ; Spammer variables
-Global Enum $g_eSpamButton, $g_eSpamWindow, $g_eSpamInterval, $g_eSpamFKey, $g_eSpamSkill, $g_eSpamPID, $g_eSpamWindowTitle
-Global $g_aSpammers[$iTabsCount * $iTabsSpammers][7]
+Global Enum $g_eSpamButton, $g_eSpamColor, $g_eSpamWindow, $g_eSpamInterval, $g_eSpamFKey, $g_eSpamSkill, $g_eSpamPID, $g_eSpamWindowTitle
+Global $g_aSpammers[$iTabsCount * $iTabsSpammers][8]
 Global const $g_sSelectWindow = "Select Window"
 
 ; Window variables
@@ -34,13 +34,20 @@ TrayItemSetOnEvent(-1, "_Exit")
 	GUICtrlCreateTab(0, 0, $iWinWidth + 2, $iWinHeight + 1)
 
 	; GUI variables
-	Local Const $iSpace=99, $iCol1=86, $iCol2=233
+	Local Const $iSpace=99, $iCol1=86, $iCol2=233, $iGroupColor = 0xF2F2F2
 
 	Local $jCount = 0
 	For $i = 1 To $iTabsCount
 		GUICtrlCreateTabItem("Spammer " & $i)
 			
 		For $j = 0 To $iTabsSpammers - 1
+			
+			; Simulate group color
+			$g_aSpammers[$jCount][$g_eSpamColor] =  GUICtrlCreateLabel("", 6, 27 + ($j * $iSpace), 273, 92) 
+			GUICtrlSetBkColor(-1, $iGroupColor)
+			GUICtrlSetState(-1, $GUI_DISABLE)
+			GUICtrlSetState(-1, $GUI_HIDE)
+			
 			GUICtrlCreateGroup("", 6, 20 + ($j * $iSpace), 274, 101)
 			
 			; Hidden label to save spammer index

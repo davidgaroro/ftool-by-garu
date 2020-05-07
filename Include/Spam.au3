@@ -23,6 +23,7 @@ Func _SpamStart($iSpamIndex)
   Local $iIntervalCtrlId = $g_aSpammers[$iSpamIndex][$g_eSpamInterval]
   Local $iFKeyCtrlId = $g_aSpammers[$iSpamIndex][$g_eSpamFKey]
   Local $iSkillCtrlId = $g_aSpammers[$iSpamIndex][$g_eSpamSkill]
+  Local $iColorCtrlId = $g_aSpammers[$iSpamIndex][$g_eSpamColor]
 
   ; Get input data
   Local $sWindow = GUICtrlRead($iWindowCtrlId)
@@ -66,6 +67,7 @@ Func _SpamStart($iSpamIndex)
   GUICtrlSetState($iIntervalCtrlId, $GUI_DISABLE)
   GUICtrlSetState($iFKeyCtrlId, $GUI_DISABLE)
   GUICtrlSetState($iSkillCtrlId, $GUI_DISABLE)
+  GUICtrlSetState($iColorCtrlId, $GUI_SHOW)
 
   ; Get main window PID
   Local $iMainPID = WinGetProcess($hMainGUI)
@@ -91,6 +93,7 @@ Func _SpamStop($iSpamIndex)
   Local $iIntervalCtrlId = $g_aSpammers[$iSpamIndex][$g_eSpamInterval]
   Local $iFKeyCtrlId = $g_aSpammers[$iSpamIndex][$g_eSpamFKey]
   Local $iSkillCtrlId = $g_aSpammers[$iSpamIndex][$g_eSpamSkill]
+  Local $iColorCtrlId = $g_aSpammers[$iSpamIndex][$g_eSpamColor]
 
   ; Clear window title
   $g_aSpammers[$iSpamIndex][$g_eSpamWindowTitle] = ""
@@ -105,4 +108,5 @@ Func _SpamStop($iSpamIndex)
   GUICtrlSetState($iIntervalCtrlId, $GUI_ENABLE)
   GUICtrlSetState($iFKeyCtrlId, $GUI_ENABLE)
   GUICtrlSetState($iSkillCtrlId, $GUI_ENABLE)
+  GUICtrlSetState($iColorCtrlId, $GUI_HIDE)
 EndFunc   ;==>_SpamStop

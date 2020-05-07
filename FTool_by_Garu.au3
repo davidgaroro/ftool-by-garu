@@ -82,7 +82,7 @@ GUISetState(@SW_SHOW, $hMainGUI)
 ; Loop until the user exits
 While 1
 	_CheckWindowsExists()
-	Sleep(1000) ; Sleep to reduce CPU usage
+	Sleep(500) ; Sleep to reduce CPU usage
 WEnd
 
 Func _Exit()

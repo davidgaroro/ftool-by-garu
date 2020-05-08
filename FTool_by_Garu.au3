@@ -15,7 +15,7 @@ Opt("TrayMenuMode", 1) ; Disable default tray menu
 Opt("TrayOnEventMode", 1) ; Enable OnEvent functions notifications for the tray
 
 ; GUI Window variables
-Local const $sTitle = "FTool by Garu", $iWinWidth = 286, $iWinHeight = 522, $iTabsCount = 4, $iTabsSpammers = 5
+Local const $sTitle = "FTool by Garu 0.1", $iWinWidth = 286, $iWinHeight = 522, $iTabsCount = 4, $iTabsSpammers = 5
 
 ; Spammer variables
 Global Enum $g_eSpamButton, $g_eSpamColor, $g_eSpamWindow, $g_eSpamInterval, $g_eSpamFKey, $g_eSpamSkill, $g_eSpamPID, $g_eSpamWindowTitle

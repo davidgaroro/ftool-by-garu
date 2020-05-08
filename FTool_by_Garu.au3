@@ -1,4 +1,9 @@
+#Region ;**** Directives created by AutoIt3Wrapper_GUI ****
+#AutoIt3Wrapper_Icon=Icons\AutoIt_Main_v11_256x256_RGB-A.ico
+#EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
+
 #RequireAdmin
+
 #include "Include\Constants.au3"
 #include "Include\Settings.au3"
 #include "Include\Spam.au3"

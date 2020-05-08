@@ -5,7 +5,7 @@ Local Const $sFilePath = "Settings.ini"
 Func _IniSave()
   Local $sSection = "", $sFKey, $sSkill
   For $i = 0 to UBound($g_aSpammers) - 1
-    $sSection = "Spammer" & $i
+    $sSection = "Spammer" & $i + 1
     
     ; Check whitespace from fkey and skill
     $sFKey = GUICtrlRead($g_aSpammers[$i][$g_eSpamFKey])
@@ -27,7 +27,7 @@ Func _IniLoad()
   Local $sSection = "", $sWindowTitle, $iInterval, $sFKey, $sSkill
 
   For $i = 0 to UBound($g_aSpammers) - 1
-    $sSection = "Spammer" & $i
+    $sSection = "Spammer" & $i + 1
 
     ; Set window title
     $sWindowTitle = IniRead($sFilePath, $sSection, "WindowTitle", $g_sSelectWindow)

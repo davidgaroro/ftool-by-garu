@@ -1,6 +1,6 @@
 #Region ;**** Directives created by AutoIt3Wrapper_GUI ****
 #AutoIt3Wrapper_Icon=Icons\AutoIt_Main_v11_256x256_RGB-A.ico
-#AutoIt3Wrapper_Res_Fileversion=0.1
+#AutoIt3Wrapper_Res_Fileversion=1.0
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
 #RequireAdmin
@@ -16,7 +16,7 @@ Opt("TrayMenuMode", 1) ; Disable default tray menu
 Opt("TrayOnEventMode", 1) ; Enable OnEvent functions notifications for the tray
 
 ; GUI Window variables
-Local const $sTitle = "FTool by Garu 0.1", $iWinWidth = 286, $iWinHeight = 522, $iTabsCount = 4, $iTabsSpammers = 5
+Local const $sTitle = "FTool by Garu 1.0", $iWinWidth = 286, $iWinHeight = 522, $iTabsCount = 4, $iTabsSpammers = 5
 
 ; Spammer variables
 Global Enum $g_eSpamButton, $g_eSpamColor, $g_eSpamWindow, $g_eSpamInterval, $g_eSpamFKey, $g_eSpamSkill, $g_eSpamPID, $g_eSpamWindowTitle

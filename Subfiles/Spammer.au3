@@ -1,6 +1,6 @@
 #Region ;**** Directives created by AutoIt3Wrapper_GUI ****
 #AutoIt3Wrapper_Icon=..\Icons\AutoIt_Main_v11_256x256_RGB-A.ico
-#AutoIt3Wrapper_Res_Fileversion=0.1
+#AutoIt3Wrapper_Res_Fileversion=1.0
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
 ; Disable tray menu

@@ -12,11 +12,11 @@ This is a tool made with [AutoIt] that automates the keystroke for the game FlyF
 ## Features
 - Smaller and more compact interface
 - Window selection more intuitive and efficient
-- Select only one f-key, skill or both
-- Selected windows are loaded/saved automatically
+- Select only one f-key, one skill or both
+- Selected window and the other options are loaded/saved automatically
 - Spam runs once before the set interval
 - Spam stops at character logout
-
+- Mandatory execution as administrator
 
 ## Built With
 AutoIt v3.3.14.5

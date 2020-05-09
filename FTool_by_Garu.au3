@@ -1,6 +1,6 @@
 #Region ;**** Directives created by AutoIt3Wrapper_GUI ****
 #AutoIt3Wrapper_Icon=Icons\AutoIt_Main_v11_256x256_RGB-A.ico
-#AutoIt3Wrapper_Res_Description=Spam Tool for FlyFF
+#AutoIt3Wrapper_Res_Description=FTool by Garu
 #AutoIt3Wrapper_Res_Fileversion=1.0
 #AutoIt3Wrapper_Res_ProductName=FTool by Garu
 #AutoIt3Wrapper_Res_ProductVersion=1.0

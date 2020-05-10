@@ -28,9 +28,6 @@ Global Enum $g_eSpamButton, $g_eSpamColor, $g_eSpamWindow, $g_eSpamInterval, $g_
 Global $g_aSpammers[$iTabsCount * $iTabsSpammers][8]
 Global const $g_sSelectWindow = "Select Window"
 
-; Window variables
-Global $g_aWindows[0]
-
 ; Create GUI window
 Local $hMainGUI = GUICreate($sTitle, $iWinWidth, $iWinHeight) 
 
@@ -101,7 +98,7 @@ GUISetState(@SW_SHOW, $hMainGUI)
 ; Loop until the user exits
 While 1
 	_CheckWindowsExists()
-	Sleep(500) ; Sleep to reduce CPU usage
+	Sleep(100) ; Sleep to reduce CPU usage
 WEnd
 
 Func _Exit()

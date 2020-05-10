@@ -27,7 +27,6 @@ Func _GetNeuzWindows($iIDFrom)
   
   Local $aWinList = WinList() ; Get windows handles list
   Local $sComboWindowsData = "|" & $g_sSelectWindow ; Use separator | at start to destroy previous list
-  Local $aArrayTmp[$iProccessCount] ; Temporary array
 
   Local $sWindowTitle = ""
 	For $i = 1 To $iProccessCount ; Loop Neuz.exe list
@@ -38,31 +37,24 @@ Func _GetNeuzWindows($iIDFrom)
 				; Compare matching PIDs
 				If WinGetProcess($sWindowTitle) = $aProcessList[$i][1] Then
           $sComboWindowsData &= "|" & $sWindowTitle ; Combo data
-          $aArrayTmp[$i - 1] = $sWindowTitle  ; Temporary array
 					ExitLoop
 				EndIf
 			EndIf
 		Next
   Next
   
-  ; Assign new array to windows array
-  $g_aWindows = $aArrayTmp
-
   ; Update select window data
 	GUICtrlSetData($iIDFrom, $sComboWindowsData, $g_sSelectWindow)
 EndFunc   ;==>_GetNeuzWindows
 
 
 Func _CheckWindowsExists()
-  For $i = 0 To UBound($g_aWindows) - 1
-    ; If window title doesn't exists
-    If WinExists($g_aWindows[$i]) = 0 Then
-      ; Stop timers from that window title
-      For $j = 0 to UBound($g_aSpammers) - 1
-        If $g_aSpammers[$j][$g_eSpamWindowTitle] = $g_aWindows[$i] Then
-          _SpamStop($j)
-        EndIf
-      Next
+  ; If window title doesn't exists stop it
+  Local $sWindowTitle = ""
+  For $i = 0 to UBound($g_aSpammers) - 1
+    $sWindowTitle = $g_aSpammers[$i][$g_eSpamWindowTitle]
+    If $sWindowTitle <> "" And WinExists($sWindowTitle) = 0 Then
+      _SpamStop($i)
     EndIf
   Next
 EndFunc   ;==>_CheckWindowsExists

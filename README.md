@@ -18,8 +18,13 @@ This is a tool made with [AutoIt] that automates the keystroke for the game FlyF
 - Spam stops at character logout
 - Mandatory execution as administrator
 
+## Download
+Download the program or source code:\
+[https://github.com/davidgaroro/ftool-by-garu/releases/latest](https://github.com/davidgaroro/ftool-by-garu/releases/latest)
+
 ## Built With
-AutoIt v3.3.14.5
+AutoIt v3.3.14.5\
+[https://www.autoitscript.com](https://www.autoitscript.com)
 
 ## How to compile 
 ### Install AutoIt

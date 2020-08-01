@@ -1,7 +1,7 @@
 
   
 # FTool by Garu
-This is a tool made with [AutoIt] that automates the keystroke for the game FlyFF inspired by Ftool Extended 0.9a.
+This is a tool made from scratch with [AutoIt] that automates the keystroke for the game FlyFF inspired by Ftool Extended 0.9a.
 
 [AutoIt]: https://www.autoitscript.com/
 
@@ -17,6 +17,7 @@ This is a tool made with [AutoIt] that automates the keystroke for the game FlyF
 - Spam runs once before the set interval
 - Spam stops at character logout
 - Mandatory execution as administrator
+- Less redundant, better structured and commented code
 
 ## Download
 Download the program or source code:\
@@ -27,11 +28,16 @@ AutoIt v3.3.14.5\
 [https://www.autoitscript.com](https://www.autoitscript.com)
 
 ## How to compile 
-### Install AutoIt
+If you want to compile the program by yourself, follow these steps:
+
+### 1. Install AutoIt
 Download and install the AutoIt last version from website:\
 [https://www.autoitscript.com/site/autoit/downloads/](https://www.autoitscript.com/site/autoit/downloads/)
 
-### Compile scripts
+### 2. Download the source code file
+[https://github.com/davidgaroro/ftool-by-garu/releases/latest](https://github.com/davidgaroro/ftool-by-garu/releases/latest)
+
+### 3. Compile scripts
 [https://www.autoitscript.com/autoit3/docs/intro/compiler.htm](https://www.autoitscript.com/autoit3/docs/intro/compiler.htm)\
 To compile the program and make it work you have to compile these two files:
  - FTool_by_Garu.au3

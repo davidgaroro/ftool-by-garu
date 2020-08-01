@@ -6,7 +6,8 @@ This is a tool made from scratch with [AutoIt] that automates the keystroke for 
 [AutoIt]: https://www.autoitscript.com/
 
 <p align="center">
-    <img src="https://i.imgur.com/N767csZ.png">
+    <img src="https://i.imgur.com/N767csZ.png"><br>
+  Made with ❤
 </p>
 
 ## Features

@@ -50,6 +50,6 @@ To compile the program and make it work you have to compile these two files:
  - [Functions.dll](https://www.virustotal.com/gui/file/1e23247a146d59997ee59a988397d77592ef698584ad265f40c485a13de34129)
 
 ## Donation
-[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=GNML9U2XC2JR6&source=url)
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/donate?hosted_button_id=T7CVYXY994KHJ)
 ## License
 [MIT](./LICENSE) &copy; davidgaroro
